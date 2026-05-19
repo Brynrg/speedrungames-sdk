@@ -1,0 +1,52 @@
+{
+  "name": "speedrungames-sdk",
+  "version": "0.1.0",
+  "description": "Shared runtime for games on speedrungames.net — speedrun timer, PB storage, HUD, leaderboard client.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./timer": {
+      "types": "./dist/timer.d.ts",
+      "import": "./dist/timer.js"
+    },
+    "./storage": {
+      "types": "./dist/storage.d.ts",
+      "import": "./dist/storage.js"
+    },
+    "./hud": {
+      "types": "./dist/hud.d.ts",
+      "import": "./dist/hud.js"
+    },
+    "./game": {
+      "types": "./dist/game.d.ts",
+      "import": "./dist/game.js"
+    },
+    "./leaderboard": {
+      "types": "./dist/leaderboard.d.ts",
+      "import": "./dist/leaderboard.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brynrg/speedrungames-sdk.git"
+  }
+}
