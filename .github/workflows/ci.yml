@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build + typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run build
+      - name: Verify dist outputs exist
+        run: |
+          test -f dist/index.js
+          test -f dist/index.d.ts
+          test -f dist/timer.js
+          test -f dist/storage.js
+          test -f dist/hud.js
+          test -f dist/game.js
+          test -f dist/leaderboard.js
